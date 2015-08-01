@@ -1,0 +1,12 @@
+spring:
+    data:
+        rest:
+            basePath: /api
+    datasource:
+        url: jdbc:mysql://localhost/boxerSample
+        username: gather
+        password: password
+    jpa:
+        hibernate:
+            ddl-auto: update
+
