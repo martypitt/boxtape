@@ -24,7 +24,7 @@ public class MavenDependencyCollectorTest {
     public void setup() throws IOException {
         MavenCli cli = new MavenCli();
         collector = new MavenDependencyCollector(cli);
-        assertThat(sampleProjectHome.exists(), is(true));
+        assertThat("Sample project not found at " + sampleProjectHome.getCanonicalPath(), sampleProjectHome.exists(), is(true));
         sampleProject = new Project(sampleProjectHome.getCanonicalPath() , new Configuration(), new BoxtapeSettings());
 
     }
