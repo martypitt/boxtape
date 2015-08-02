@@ -12,6 +12,7 @@
     <artifactId>cli</artifactId>
 
     <build>
+        <finalName>boxtape</finalName>
         <plugins>
             <plugin>
                 <artifactId>kotlin-maven-plugin</artifactId>
@@ -32,6 +33,29 @@
                         <phase>process-test-sources</phase>
                         <goals>
                             <goal>test-compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>appassembler-maven-plugin</artifactId>
+                <configuration>
+                    <programs>
+                        <program>
+                            <mainClass>io.boxtape.cli.BoxtapeCli</mainClass>
+                            <id>boxtape</id>
+                        </program>
+                    </programs>
+                    <assembleDirectory>${project.build.directory}/dist</assembleDirectory>
+                    <repositoryLayout>flat</repositoryLayout>
+                    <repositoryName>lib</repositoryName>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>assemble</goal>
                         </goals>
                     </execution>
                 </executions>
